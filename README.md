@@ -13,5 +13,8 @@ They are defined at [Custom.cs](https://github.com/djlastnight/ExtensibleCalcula
 Currently all the user defined ```operators``` has equal (but higher than the 'standard' operators like '+', '-', '*', '/') precedence.
 They could be left (not tested) or right associative.
 
+Currently the WPF app supports keyboard input for the 'standard' operators and the digits.  
+[Try it now!](https://github.com/djlastnight/ExtensibleCalculator/releases)  
+
 djlastnight,
 2018
