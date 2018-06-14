@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Calculator.CalculatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:Calculator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             my:InputBindingBehavior.PropagateInputBindingsToWindow="true">
+    <UserControl.InputBindings>
+        <KeyBinding Key="NumPad0" Command="{Binding InputCommand}" CommandParameter="0" />
+        <KeyBinding Key="D0" Command="{Binding InputCommand}" CommandParameter="0" />
+        
+        <KeyBinding Key="NumPad1" Command="{Binding InputCommand}" CommandParameter="1" />
+        <KeyBinding Key="D1" Command="{Binding InputCommand}" CommandParameter="1" />
+        
+        <KeyBinding Key="NumPad2" Command="{Binding InputCommand}" CommandParameter="2" />
+        <KeyBinding Key="D2" Command="{Binding InputCommand}" CommandParameter="2" />
+        
+        <KeyBinding Key="NumPad3" Command="{Binding InputCommand}" CommandParameter="3" />
+        <KeyBinding Key="D3" Command="{Binding InputCommand}" CommandParameter="3" />
+        
+        <KeyBinding Key="NumPad4" Command="{Binding InputCommand}" CommandParameter="4" />
+        <KeyBinding Key="D4" Command="{Binding InputCommand}" CommandParameter="4" />
+        
+        <KeyBinding Key="NumPad5" Command="{Binding InputCommand}" CommandParameter="5" />
+        <KeyBinding Key="D5" Command="{Binding InputCommand}" CommandParameter="5" />
+        
+        <KeyBinding Key="NumPad6" Command="{Binding InputCommand}" CommandParameter="6" />
+        <KeyBinding Key="D6" Command="{Binding InputCommand}" CommandParameter="6" />
+        
+        <KeyBinding Key="NumPad7" Command="{Binding InputCommand}" CommandParameter="7" />
+        <KeyBinding Key="D7" Command="{Binding InputCommand}" CommandParameter="7" />
+        
+        <KeyBinding Key="NumPad8" Command="{Binding InputCommand}" CommandParameter="8" />
+        <KeyBinding Key="D8" Command="{Binding InputCommand}" CommandParameter="8" />
+        
+        <KeyBinding Key="NumPad9" Command="{Binding InputCommand}" CommandParameter="9" />
+        <KeyBinding Key="D9" Command="{Binding InputCommand}" CommandParameter="9" />
+        
+        <KeyBinding Key="Add" Command="{Binding InputCommand}" CommandParameter="+" />
+        <KeyBinding Key="OemPlus" Modifiers="Shift" Command="{Binding InputCommand}" CommandParameter="+" />
+        
+        <KeyBinding Key="Subtract" Command="{Binding InputCommand}" CommandParameter="-" />
+        <KeyBinding Key="OemMinus" Command="{Binding InputCommand}" CommandParameter="-" />
+        
+        <KeyBinding Key="Multiply" Command="{Binding InputCommand}" CommandParameter="*" />
+        <KeyBinding Key="D8" Modifiers="Shift" Command="{Binding InputCommand}" CommandParameter="*" />
+        
+        <KeyBinding Key="Divide" Command="{Binding InputCommand}" CommandParameter="/" />
+        <KeyBinding Key="OemQuestion" Command="{Binding InputCommand}" CommandParameter="/" />
+        
+        <KeyBinding Key="Decimal" Command="{Binding InputCommand}" CommandParameter="." />
+        <KeyBinding Key="OemComma" Command="{Binding InputCommand}" CommandParameter="." />
+        <KeyBinding Key="OemPeriod" Command="{Binding InputCommand}" CommandParameter="." />
+        
+        <KeyBinding Key="Enter" Command="{Binding InputCommand}" CommandParameter="=" />
+        <KeyBinding Key="OemPlus" Command="{Binding InputCommand}" CommandParameter="=" />
+        
+        <KeyBinding Key="Back" Command="{Binding InputCommand}" CommandParameter="←" />
+        <KeyBinding Key="Delete" Command="{Binding InputCommand}" CommandParameter="CE" />
+    </UserControl.InputBindings>
+    <Grid Button.Click="OnButtonClick">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="75*" />
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="5">
+            <!-- LCD -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="60*" />
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform"
+                         Grid.Row="0"
+                         HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding Expression}"
+                               Padding="0,0,5,0" />
+                </Viewbox>
+                <Viewbox Stretch="Uniform"
+                         Grid.Row="1"
+                         HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding Result}"
+                               Padding="0,0,5,0">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy" Command="{Binding CopyCommand}" />
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
+                </Viewbox>
+            </Grid>
+        </Border>
+        <!-- Buttons -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!-- Row 1 -->
+            <my:CalculatorButton FunctionType="LeftBracket" Grid.Row="0" Grid.Column="0" />
+            <my:CalculatorButton FunctionType="RightBracket" Grid.Row="0" Grid.Column="1" />
+            <my:CalculatorButton FunctionType="Back" Grid.Row="0" Grid.Column="2" />
+            <my:CalculatorButton FunctionType="ClearEntry" Grid.Row="0" Grid.Column="3" />
+            <my:CalculatorButton FunctionType="Clear" Grid.Row="0" Grid.Column="4" />
+            <my:CalculatorButton FunctionType="Negate" Grid.Row="0" Grid.Column="5" />
+            <my:CalculatorButton FunctionType="Sqrt" Grid.Row="0" Grid.Column="6" />
+
+            <!-- Row 2 -->
+            <my:CalculatorButton FunctionType="Grad2Deg" Grid.Row="1" Grid.Column="0" />
+            <my:CalculatorButton FunctionType="Sind" Grid.Row="1" Grid.Column="1" />
+            <my:CalculatorButton FunctionType="Seven" Grid.Row="1" Grid.Column="2" />
+            <my:CalculatorButton FunctionType="Eight" Grid.Row="1" Grid.Column="3" />
+            <my:CalculatorButton FunctionType="Nine" Grid.Row="1" Grid.Column="4" />
+            <my:CalculatorButton FunctionType="Divide" Grid.Row="1" Grid.Column="5" />
+            <my:CalculatorButton FunctionType="Power" Grid.Row="1" Grid.Column="6" />
+            
+            <!-- Row 3 -->
+            <my:CalculatorButton FunctionType="Rad2Deg" Grid.Row="2" Grid.Column="0" />
+            <my:CalculatorButton FunctionType="Cosd" Grid.Row="2" Grid.Column="1" />
+            <my:CalculatorButton FunctionType="Four" Grid.Row="2" Grid.Column="2" />
+            <my:CalculatorButton FunctionType="Five" Grid.Row="2" Grid.Column="3" />
+            <my:CalculatorButton FunctionType="Six" Grid.Row="2" Grid.Column="4" />
+            <my:CalculatorButton FunctionType="Multiply" Grid.Row="2" Grid.Column="5" />
+            <my:CalculatorButton FunctionType="Reciproc" Grid.Row="2" Grid.Column="6" />
+            
+            <!-- Row 4 -->
+            <my:CalculatorButton FunctionType="Pi" Grid.Row="3" Grid.Column="0" />
+            <my:CalculatorButton FunctionType="Tand" Grid.Row="3" Grid.Column="1" />
+            <my:CalculatorButton FunctionType="One" Grid.Row="3" Grid.Column="2" />
+            <my:CalculatorButton FunctionType="Two" Grid.Row="3" Grid.Column="3" />
+            <my:CalculatorButton FunctionType="Three" Grid.Row="3" Grid.Column="4" />
+            <my:CalculatorButton FunctionType="Minus" Grid.Row="3" Grid.Column="5" />
+            <my:CalculatorButton FunctionType="Equals" Grid.Row="3" Grid.Column="6" Grid.RowSpan="2" />
+            
+            <!-- Row 5 -->
+            <my:CalculatorButton FunctionType="E" Grid.Row="4" Grid.Column="0" />
+            <my:CalculatorButton FunctionType="Log" Grid.Row="4" Grid.Column="1" />
+            <my:CalculatorButton FunctionType="Zero" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" />
+            <my:CalculatorButton FunctionType="Comma" Grid.Row="4" Grid.Column="4" />
+            <my:CalculatorButton FunctionType="Plus" Grid.Row="4" Grid.Column="5" />
+        </Grid>
+    </Grid>
+</UserControl>
