@@ -10,8 +10,8 @@ Usage example:
 You can easily add new custom math operators and functions to it.
 They are defined at [Custom.cs](https://github.com/djlastnight/ExtensibleCalculator/blob/master/CalculatorCore/Custom.cs).  
 
-Currently all the user defined operators has equal (but higher than the 'standard' operators like '+', '-', '*', '/') precedence.
-The could be left (not tested) or right associative.
+Currently all the user defined ```operators``` has equal (but higher than the 'standard' operators like '+', '-', '*', '/') precedence.
+They could be left (not tested) or right associative.
 
 djlastnight,
 2018
