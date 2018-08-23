@@ -114,6 +114,7 @@
         [TestCase("log(100.000)", 2)]
         [TestCase("(negate(sqrt(25.2) * 3.333 - 22/7.0) + 2.2) / -55.233 + sind(62)", 1.089140811908613)]
         [TestCase("(negate(sqrt(25.2) * 3.333 - 22 / 7.0) + 2.2) / -55.233 - 3 ^ sind(62 ^ 2.222)", -0.15150092965915213)]
+        [TestCase("6 / 2 * (1 + 2)", 9)] /* When we have division and multiplication, we must start calculating from left to right, i.e 3 * (1 + 2) = 9 */
         public void TestParse(string expression, double expectedResult)
         {
             Assert.AreEqual(expectedResult, Operations.Compute(expression));
